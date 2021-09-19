@@ -1,31 +1,53 @@
-import React from 'react';
+import axios from 'axios';
+import React, { Component } from 'react';
+import {
+    Carousel,
+  
+} from 'react-bootstrap';
 
-class BestBooks extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: []
+class BestBooks extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            book: [],
+        }
     }
-  }
+    componentDidMount = () => {
+        axios.get(`http://localhost:3001/controller`).then(Response => {
+            this.setState({
+              book: Response.data.books,
+            })
+        })
 
-  /* TODO: Make a GET request to your API to fetch books for the logged in user  */
+    }
+    render() {
+        return (
+            <div>
+                {this.state.book.length > 0 && <Carousel indicators={false} className="Carousel" >
+                    {
+                        this.state.book.map((Element, i) => {
+                            return <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="https://colorcasters.com/wp-content/uploads/2014/05/Black-300x300.jpeg"
+                                    alt="First slide"
+                                />
+                                <Carousel.Caption className="color">
+                                    <h3 className="ele">Book Title :{Element.title}</h3>
+                                    <p className="ele">Description :{Element.description}</p>
+                                    <p className="ele">Status :{Element.status}</p>
+                                    <p className="ele">E-mail :{Element.email}</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        })}
 
-  render() {
-
-    /* TODO: render user's books in a Carousel */
-
-    return (
-      <>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-
-        {this.state.books.length ? (
-          <p>Book Carousel coming soon</p>
-        ) : (
-          <h3>No Books Found :(</h3>
-        )}
-      </>
-    )
-  }
+                </Carousel>
+                }
+                {
+                    this.state.book.length ===0 && <h3>The book collection is empty.</h3>
+                }
+            </div>
+        )
+    }
 }
-
 export default BestBooks;

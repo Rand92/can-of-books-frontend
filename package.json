@@ -8,6 +8,10 @@
     "@testing-library/user-event": "12.8.0",
     "axios": "0.21.1",
     "bootstrap": "4.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.6",
     "react": "^17.0.1",
     "react-bootstrap": "1.5.1",
     "react-cookie": "4.0.3",
@@ -40,5 +44,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This repository has starter code to begin work on creating your own online bookshelf.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rand92/can-of-books-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rand92/can-of-books-frontend/issues"
+  },
+  "homepage": "https://github.com/Rand92/can-of-books-frontend#readme"
 }
